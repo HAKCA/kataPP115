@@ -1,7 +1,5 @@
 package jm.task.core.jdbc;
 
-import jm.task.core.jdbc.dao.UserDao;
-import jm.task.core.jdbc.dao.UserDaoJDBCImpl;
 import jm.task.core.jdbc.model.User;
 import jm.task.core.jdbc.service.UserServiceImpl;
 
@@ -20,11 +18,11 @@ public class Main {
         userService.createUsersTable();
         users.forEach(user -> {
             userService.saveUser(user.getName(), user.getLastName(), user.getAge());
-            System.out.printf("User с именем – %s добавлен в базу данных\n" , user.getName());
+            System.out.printf("User с именем – %s добавлен в базу данных\n", user.getName());
         });
-        userService.saveUser("Никита", "Литвинков", (byte) 19);
-       // users = userService.getAllUsers();
-       // userService.cleanUsersTable();
-        //  userService.dropUsersTable();
+        users = userService.getAllUsers();
+        users.forEach(System.out::println);
+        userService.cleanUsersTable();
+        userService.dropUsersTable();
     }
 }
