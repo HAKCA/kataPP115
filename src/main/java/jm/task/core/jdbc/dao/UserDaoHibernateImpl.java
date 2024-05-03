@@ -23,6 +23,8 @@ public class UserDaoHibernateImpl implements UserDao {
     }
 
     private void createDropQuery(String sql) {
+        Transaction transaction = null;
+        Session session = null;
         try {
             session = Util.getSessionFactory().openSession();
             transaction = session.beginTransaction();
@@ -59,6 +61,8 @@ public class UserDaoHibernateImpl implements UserDao {
 
     @Override
     public void saveUser(String name, String lastName, byte age) {
+        Transaction transaction = null;
+        Session session = null;
         try {
             session = Util.getSessionFactory().openSession();
             transaction = session.beginTransaction();
@@ -85,6 +89,8 @@ public class UserDaoHibernateImpl implements UserDao {
 
     @Override
     public void removeUserById(long id) {
+        Transaction transaction = null;
+        Session session = null;
         User user = new User();
         user.setId(id);
         try {
@@ -113,6 +119,9 @@ public class UserDaoHibernateImpl implements UserDao {
 
     @Override
     public List<User> getAllUsers() {
+        Transaction transaction = null;
+        Session session = null;
+        List<User> list = null;
         try {
             session = Util.getSessionFactory().openSession();
             transaction = session.beginTransaction();
@@ -140,6 +149,8 @@ public class UserDaoHibernateImpl implements UserDao {
 
     @Override
     public void cleanUsersTable() {
+        Transaction transaction = null;
+        Session session = null;
         try {
             session = Util.getSessionFactory().openSession();
             transaction = session.beginTransaction();
