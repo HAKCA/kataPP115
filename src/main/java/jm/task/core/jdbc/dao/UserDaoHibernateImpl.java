@@ -17,9 +17,6 @@ public class UserDaoHibernateImpl implements UserDao {
             "lastName VARCHAR(50) NOT NULL, " +
             "age TINYINT NOT NULL)";
     final String drop = "drop table if exists users";
-    private Transaction transaction = null;
-    private Session session = null;
-    private List<User> list = null;
 
     public UserDaoHibernateImpl() {
 
